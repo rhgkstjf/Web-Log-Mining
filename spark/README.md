@@ -1,5 +1,5 @@
-# 1. Spark Install
-    
+1. Spark Install
+
     ### Spark 환경변수 추가
     ```sh
     vim .bashrc
@@ -11,8 +11,8 @@
     export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:$PYTHONPATH
     export PYSPARK_PYTHON=python3
     #아래 2줄은 Pyspark 사용을 위한 python3 버전 설정
-
     ```
+    
     
     ### Spark tgz 다운로드 후 압축 해제
     ```sh

@@ -155,9 +155,10 @@ output {
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.1-amd64.deb
 sudo dpkg -i elasticsearch-7.10.1-amd64.deb
 ```
-### Elasticsearch start
+### Elasticsearch 실행 및 종료
 ```sh
 sudo service elasticsearch start
+sudo service elasticsearch stop
 ```
 
 ### Elasticsearch 실행 확인
@@ -206,22 +207,38 @@ wget https://artifacts.elastic.co/downloads/kibana/kibana-7.10.1-amd64.deb
 sudo dpkg -i kibana-7.10.1-amd64.deb
 ```
 
+### Kibana 실행 및 종료
+```sh
+sudo service kibana start
+sudo service kibana stop
+```
 
-
-
-
-
-
-
-
-
+### Kibana 환경설정 수정
+### 수정을 위해 root 권한 필요
+### 파일 경로 : /etc/kibana/kibana.yml
+```sh
+server.port: kibana_port
+server.host: "kibana_ip"
+elasticsearch.hosts: ["http://elasticsearch_ip:port"]
+```
 
 
 ### Elasticsearch X-Pack Install
-### Elasticsearch bin 폴더 경로 <Deb 설치시> : /usr/share/elasticsearch/bin/ 
+### Elastic 공식 홈페이지 <X-Pack 가이드>
+### https://www.elastic.co/guide/kr/x-pack/current/installing-xpack.html
+### 기본적으로 X-Pack 이 활성화되어있습니다.
+### 설치가 안되어있을 시
+### Elasticsearch, Kibana bin 폴더 경로 <Deb 설치시> : /usr/share/
 ```sh
-
+elasticsearch/bin/elasticsearch
+elasticsearch/bin/elasticsearch-plugin install x-pack
+kibana/bin/kibana-plugin install x-pack
 ```
-
+### x-pack 활성화 yml 파일 수정
+### 파일 경로 /etc/elasticsearch/elasticsearch.yml , /etc/kibana/kibana.yml
+### Elasticsearch.yml 과 kibana.yml 둘다 추가
+```sh
+xpack.security.enabled true
+```
 
 

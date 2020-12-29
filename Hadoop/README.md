@@ -12,10 +12,13 @@
    ```sh
    vim /home/hadoop/.bashrc
    ```
+   
    ### <아래 내용 파일에 추가>
+   ```sh
    export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_201
    export PATH=$JAVA_HOME/bin:$PATH
    export CLASSPATH=$JAVA_HOME/lib:$CLASSPATH
+   ```
    
    ### 설치할 Java 버전 심볼릭 링크 생성
    ```sh

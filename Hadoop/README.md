@@ -15,7 +15,7 @@
    
    ### <아래 내용 파일에 추가>
    ```sh
-   export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_201
+   export JAVA_HOME="/usr/lib/jvm/jdk1.8.0_201"
    export PATH=$JAVA_HOME/bin:$PATH
    export CLASSPATH=$JAVA_HOME/lib:$CLASSPATH
    ```
@@ -143,7 +143,8 @@
    ### YARN 자원 관리자, 노드 관리자 환경설정
    ### 파일 경로 : $HADOOP_HOME/etc/hadoop/yarn-site.xml
    ```sh
-   <property>
+   <configuration>
+        <property>
                 <name>yarn.nodemanager.aux-services</name>
                 <value>mapreduce_shuffle</value>
         </property>
@@ -183,5 +184,63 @@
                 <name>yarn.nodemanager.vmem-check-enabled</name>
                 <value>false</value>
         </property>
+   </configuration>
+   ```
+   ### Hadoop 맵 리듀스의 JobTracker, TaskTracker 데몬 설정
+   ### 파일 경로 : $HADOOP_HOME/etc/hadoop/mapred-site.xml.template
+   ```sh
+   <configuration>
+        <property>
+                <name>mapreduce.framework.name</name>
+                <value>yarn</value>
+        </property>
+   </configuration>
    ```
    
+   ### Hadoop 내 환경변수 설정 중, java 경로 변환
+   ### 파일 경로 : $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+   ```sh
+   #The java implementation to use.
+   export JAVA_HOME="/usr/lib/jvm/jdk1.8.0_201"
+   export HADOOP_HOME=PREFIX=${HADOOP_HOME}
+   ```
+   ### Hadoop 환경설정 완료된 파일 및 폴더를 second, slave node에 배포
+   ```sh
+   scp /home/hadoop/.bashrc second:/home/hadoop/.bashrc
+   scp -r /home/hadoop/hadoop-2.7.7 second:/home/hadoop/
+   #slave에 배포시
+   #cp /home/hadoop/.bashrc slave1:/home/hadoop/.bashrc
+   #scp -r /home/hadoop/hadoop-2.7.7 slave1:/home/hadoop/
+   ```
+   ### Hadoop 실행
+   #### 처음 실행 시 마스터에서 네임노드 포맷과정 필요
+   ```sh
+   $HADOOP_HOME/sbin/start-all.sh
+   hadoop namenode -format
+   $HADOOP_HOME/sbin/stop-all.sh
+   $HADOOP_HOME/sbin/start-all.sh
+   ```
+   
+   ### jps 사용하여 마스터, 세컨드, 슬레이브 노드 동작확인
+   ```sh
+   jps
+   ```
+   
+   ### Hadoop 동작 확인 예제프로그램 실행
+   #### Hadoop README.txt 파일 워드 카운트
+   ```sh
+   hadoop fs -mkdir /input
+   hadoop fs -put $HADOOP_HOME/README.txt /input
+   hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.7.jar wordcount /input/README.txt /output
+   hadoop fs -cat /output/part-r-00000
+   ```
+   
+   ### Hadoop Web
+   #### 만일 서버에서 구동하고, 외부에서 확인하고싶다면 포트포워딩이 필요
+   ### Ex
+   #### 내부 ip 192.168.0.100:50070 - Hadoop master
+   #### 라우터 ip 1.1.1.1
+   #### 포트포워딩 1.1.1.1:50070 -> 192.168.0.100:50070 규칙 생성
+   
+   ### Yarn Web
+   #### Yarn Web port -> 8088

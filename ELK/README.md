@@ -77,7 +77,7 @@ export LogStash=$HOME/logstash
 ### Logstash 환경설정 파일 복사 및 수정
 ### 파일 경로 : $LogStash/config/logstash-sample.conf
 ```sh
-cp logstash-sample.conf
+cp access-apache.conf logstash-sample.conf
 ```
 
 ### 환경설정 수정

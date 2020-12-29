@@ -109,7 +109,79 @@
    </configuration>
    ```
    
-   ### 네임도으, 세컨드 등 HDFS 데몬을 위한 환경설정
+   ### 네임노드, 세컨드 등 HDFS 데몬을 위한 환경설정
+   ### 파일 경로 : $HADOOP_HOME/etc/hadoop/hdfs-site.xml
    ```sh
+   <configuration>
+        <property>
+                <name>dfs.replication</name>
+                <value>3</value>
+        </property>
+        <property>
+                <name>dfs.name.dir</name>
+                <value>/home/hadoop/hadoop-2.7.7/hdfs/name</value>
+        </property>
+        <property>
+                <name>dfs.data.dir</name>
+                <value>/home/hadoop/hadoop-2.7.7/hdfs/data</value>
+        </property>
+        <property>
+                <name>dfs.http.address</name>
+                <value>master:50070</value>
+        </property>
+        <property>
+                <name>dfs.permissions</name>
+                <value>false</value>
+        </property>
+        <property>
+                <name>dfs.namenode.secondary.http-address</name>
+                <value>second:50090</value>
+        </property>
+   </configuration>
+   ```
+   
+   ### YARN 자원 관리자, 노드 관리자 환경설정
+   ### 파일 경로 : $HADOOP_HOME/etc/hadoop/yarn-site.xml
+   ```sh
+   <property>
+                <name>yarn.nodemanager.aux-services</name>
+                <value>mapreduce_shuffle</value>
+        </property>
+        <property>
+                <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+                <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+        </property>
+        <property>
+                <name>yarn.resourcemanager.resource-tracker.address</name>
+                <value>master:8025</value>
+        </property>
+        <property>
+                <name>yarn.resourcemanager.scheduler.address</name>
+                <value>master:8030</value>
+        </property>
+        <property>
+                <name>yarn.resourcemanager.address</name>
+                <value>master:8040</value>
+        </property>
+        <property>
+                <name>yarn.resourcemanager.webapp.address</name>
+                <value>master:8088</value>
+        </property>
+        <property>
+                <name>yarn.nodemanager.resource.memory-mb</name>
+                <value>2048</value>
+        </property>
+        <property>
+                <name>yarn.nodemanager.resource.cpu-vcores</name>
+                <value>1</value>
+        </property>
+        <property>
+                <name>yarn.nodemanager.pmem-check-enabled</name>
+                <value>false</value>
+        </property>
+        <property>
+                <name>yarn.nodemanager.vmem-check-enabled</name>
+                <value>false</value>
+        </property>
    ```
    

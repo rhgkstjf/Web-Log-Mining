@@ -100,3 +100,7 @@
     $SPARK_HOME/sbin/stop-all.sh
     ```
     
+    ### sparkContext 는 1개이상 만드려면 설정을 바꿔줘야한다.
+    ### SparkSession에 sparkContext가 포함되어있으므로 sparkSession객체의 sparkContext로 접근하면 가능
+    ### sparkContext를 사용해야하는곳 sc.... -> spark.sparkContext....
+    

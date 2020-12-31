@@ -75,7 +75,16 @@ export VISUAL=vim; crontab -e
 ### 전처리는 전단계인 원시 로그데이터가 전송한 후에 작업이 이루어져야합니다.
 ### 스케쥴링시에 약간의 시간을 두시고 스케쥴링해주세요.
 
+
 # 전처리된 데이터를 통해 데이터 분석을 시작합니다.
+
+### 분석을 시작하기 전에 웹 서버의 게시판을 크롤링해야합니다.
+### 사용자의 접속과 게시판 연관을 위해 필요합니다.
+### 크롤링한 데이터를 HDFS상에 저장합니다.
+```sh
+python3 crw.py
+hadoop fs -put urldata.json /urldata/urldata.json
+```
 
 ### Scala Code Source 를 sbt를 통해 패키징합니다.
 ### Sbt version 1.3
@@ -89,13 +98,60 @@ export VISUAL=vim; crontab -e
       * scala
         * scala-source
         
-
+### Scala Source는 해당 프로젝트 폴더에 있습니다.
 ```sh
 sbt package
 ```
 
+### jar 파일을 Spark에 제출하여 실행합니다.
+```sh
+$SPARK_HOME/bin/spark-submit --class Auto --master yarn $HOME/AutoLab/Auto/target/scala-2.11/autolog-project_2.11-1.3.jar
+```
 
+### 실행되고난 후 HDFS에 생선된 json파일들은 모두 분석을 통해 의미있는 정보를 담고있습니다.
+### 해당 데이터들을 모두 Local에 저장합니다.
+### 저장한 후에 사용된 폴더와 파일도 모두 지웁니다.
+### ES에 저장되있는 데이터도 모두 지우고 index도 삭제합니다.
+```sh
+curl -X DELETE "[es-ip]:[es-port]/[es-index-name]?pretty"
 
+hadoop fs -copyToLocal /Auto/$P/*.json /home/hadoop/AutoLab/Week_DF/$P/Total.json
+hadoop fs -copyToLocal /Auto/Class/*.json /home/hadoop/AutoLab/Week_DF/$P/Class.json
+hadoop fs -copyToLocal /Auto/Content/*.json /home/hadoop/AutoLab/Week_DF/$P/Content.json
+hadoop fs -copyToLocal /Auto/Hack/*.json /home/hadoop/AutoLab/Week_DF/$P/Hack.json
+hadoop fs -copyToLocal /Auto/User/*.json /home/hadoop/AutoLab/Week_DF/$P/User.json
+hadoop fs -copyToLocal /Auto/Korea/*.json /home/hadoop/AutoLab/Week_DF/$P/Korea.json
+hadoop fs -copyToLocal /Auto/Classfication/*.json /home/hadoop/AutoLab/Week_DF/$P/Classfication.json
+hadoop fs -copyToLocal /Auto/Country/*.json /home/hadoop/AutoLab/Week_DF/$P/Country.json
 
+hadoop fs -rm /Auto/$P/*
+hadoop fs -rm /Auto/Class/*
+hadoop fs -rm /Auto/Content/*
+hadoop fs -rm /Auto/Hack/*
+hadoop fs -rm /Auto/User/*
+hadoop fs -rm /Auto/Korea/*
+hadoop fs -rm /Auto/Classfication/*
+hadoop fs -rm /Auto/Country/*
 
+hadoop fs -rmdir /Auto/$P
+hadoop fs -rmdir /Auto/Class
+hadoop fs -rmdir /Auto/Content
+hadoop fs -rmdir /Auto/Hack
+hadoop fs -rmdir /Auto/User
+hadoop fs -rmdir /Auto/Korea
+hadoop fs -rmdir /Auto/Classfication
+hadoop fs -rmdir /Auto/Country
+```
+
+### Local에 저장한 데이터를 웹 서버에서 가져갑니다.
+
+```sh
+P=$(date "+%Y-%m-%d")
+ssh -p [web-server-port] [web-server-user]@[web-server-ip] "echo '[sudo pwd]' | sudo -S mkdir /var/www/html/FLASKAPPS/Data/$P"
+ssh -p [web-server-port][web-server-user]@[web-server-ip] "sh /home/[user]/DataLoad.sh
+```
+
+### 해당 데이터를 FLASK에서 사용하여 html파일을 렌더링시키면서, html에 데이터를 전송합니다.
+
+### 웹을 통해 데이터를 차트로 시각화합니다.
 

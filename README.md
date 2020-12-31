@@ -85,9 +85,9 @@ export VISUAL=vim; crontab -e
 ### sbt 프로젝트 구조
 * sbt-project-folder
   * src
-   * main
-     * scala
-       * scala-source
+    * main
+      * scala
+        * scala-source
         
 
 ```sh

@@ -40,3 +40,15 @@ sudo apt install python3.7
 python3.7 --version
 ```
 
+### pip 3 Install
+
+```sh
+sudo apt-get install python3-pip
+```
+
+### Flask Install
+```sh
+sudo pip3 install flask
+```
+
+

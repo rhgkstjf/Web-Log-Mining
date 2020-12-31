@@ -18,4 +18,5 @@
 * Apache HTTP Server Install
 * Flask Install
 
-https://github.com/rhgkstjf/Web-Log-Mining/issues/1#issue-776850156
+![시스템구성](https://user-images.githubusercontent.com/44472886/103399644-5395ec80-4b85-11eb-899d-f763688be63b.JPG)
+

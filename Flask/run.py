@@ -19,4 +19,4 @@ classfication = list(load_json_list_file('/var/www/FLASKAPPS/Classfication.json'
 
 @app.route('/')
 def test():
-    return render_template('test.html',result=[hack, content, country, classfication])
+    return render_template('chart.html',result=[hack, content, country, classfication])

@@ -15,7 +15,6 @@
   * Elasticsearch
   * Kibana
   * Filebeat
-* Apache HTTP Server Install
 * Flask Install
 
 ### 시스템 구성도

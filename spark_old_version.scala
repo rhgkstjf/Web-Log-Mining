@@ -17,7 +17,7 @@ object Auto{
      val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
      val today = formatter.format(now)
 
-     val esConf = Map("es.nodes" -> "220.69.209.54:9481")
+     val esConf = Map("es.nodes" -> "es-ip:es-port")
      val df = spark.read.format("org.elasticsearch.spark.sql").options(esConf).load("logstash-autolog")
      df.createOrReplaceTempView("table")
      val allDF = spark.sql("SELECT geoip,user_agent,os,request,timestamp FROM table GROUP BY geoip, user_agent, os, request, timestamp HAVING geoip.ip IS NOT NULL")

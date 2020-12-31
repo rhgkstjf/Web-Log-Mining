@@ -151,6 +151,13 @@ ssh -p [web-server-port] [web-server-user]@[web-server-ip] "echo '[sudo pwd]' | 
 ssh -p [web-server-port][web-server-user]@[web-server-ip] "sh /home/[user]/DataLoad.sh
 ```
 
+### 가져가는 스크립트
+```sh
+P=$(date "+%Y-%m-%d")
+scp -P [Hadoop-master-port] hadoop@[hadoop-master-ip]:/home/hadoop/AutoLab/Week_DF/$P/* $HOME/Data/
+echo '[sudo pwd]' | sudo -S mv $HOME/Data/* /var/www/html/FLASKAPPS/Data/$P/
+```
+
 ### 해당 데이터를 FLASK에서 사용하여 html파일을 렌더링시키면서, html에 데이터를 전송합니다.
 
 ### 웹을 통해 데이터를 차트로 시각화합니다.

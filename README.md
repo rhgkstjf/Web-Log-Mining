@@ -108,7 +108,7 @@ sbt package
 $SPARK_HOME/bin/spark-submit --class Auto --master yarn $HOME/AutoLab/Auto/target/scala-2.11/autolog-project_2.11-1.3.jar
 ```
 
-### 실행되고난 후 HDFS에 생선된 json파일들은 모두 분석을 통해 의미있는 정보를 담고있습니다.
+### 실행되고난 후 HDFS에 생된 json파일들은 모두 분석을 통해 의미있는 정보를 담고있습니다.
 ### 해당 데이터들을 모두 Local에 저장합니다.
 ### 저장한 후에 사용된 폴더와 파일도 모두 지웁니다.
 ### ES에 저장되있는 데이터도 모두 지우고 index도 삭제합니다.

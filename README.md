@@ -88,6 +88,11 @@ export VISUAL=vim; crontab -e
   * main
    * scala
     * scala-source
+* sbt-project-folder
+  * src
+    * main
+      * scala
+        
 
 ```sh
 sbt package

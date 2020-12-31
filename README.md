@@ -18,8 +18,10 @@
 * Apache HTTP Server Install
 * Flask Install
 
+### 시스템 구성도
 
-![시스템구성](https://user-images.githubusercontent.com/44472886/103399644-5395ec80-4b85-11eb-899d-f763688be63b.JPG)
+![시스템구성](https://user-images.githubusercontent.com/44472886/103399806-18e08400-4b86-11eb-9c8e-ebce866ff990.JPG)
+
 
 ### Apache 웹 서버로부터 원시 웹 액세스 로그를 데이터 전처리 서버로 전송합니다. 전송된 로그 데이터는 Filebeat를 통해 Logstash로 전달되며 전달된 원시 로그 데이터는 Logstash를 통해 필터링 되어 지리데이터를 포함하게 되고, 데이터 포맷이 Json형식으로 바뀌어 Elasticsearch에 색인됩니다. 색인된 데이터를 통해 데이터 분석을 시작하며, Apache Hadoop와 Elasticsearch의 연동 인터페이스 ES-HADOOP을 사용하여 Elasticsearch와 Hadoop 간에 데이터를 더욱 쉽게 이동할 수 있게 할 수 있습니다.. Apache Spark 분석 엔진을 통해 로그 데이터를 분석하여 분석된 데이터를 시각화 웹 서버로 전송한 뒤 마이크로 웹 프레임워크 Flask와 Apache HTTP Server를 통해 분석된 데이터를 차트로 시각해줍니다. Kibana를 통해 시각화하는 방법도 있습니다.
 

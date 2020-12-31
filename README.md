@@ -24,7 +24,7 @@
 ![시스템구성](https://user-images.githubusercontent.com/44472886/103399858-5e04b600-4b86-11eb-84d1-9d411fe99c32.JPG)
 
 
-### Apache 웹 서버로부터 원시 웹 액세스 로그를 데이터 전처리 서버로 전송합니다. 전송된 로그 데이터는 Filebeat를 통해 Logstash로 전달되며 전달된 원시 로그 데이터는 Logstash를 통해 필터링 되어 지리데이터를 포함하게 되고, 데이터 포맷이 Json형식으로 바뀌어 Elasticsearch에 색인됩니다. 색인된 데이터를 통해 데이터 분석을 시작하며, Apache Hadoop와 Elasticsearch의 연동 인터페이스 ES-HADOOP을 사용하여 Elasticsearch와 Hadoop 간에 데이터를 더욱 쉽게 이동할 수 있게 할 수 있습니다.. Apache Spark 분석 엔진을 통해 로그 데이터를 분석하여 분석된 데이터를 시각화 웹 서버로 전송한 뒤 마이크로 웹 프레임워크 Flask와 Apache HTTP Server를 통해 분석된 데이터를 차트로 시각해줍니다. Kibana를 통해 시각화하는 방법도 있습니다.
+### Apache 웹 서버로부터 원시 웹 액세스 로그를 데이터 전처리 서버로 전송합니다.   전송된 로그 데이터는 Filebeat를 통해 Logstash로 전달되며 전달된 원시 로그 데이터는 Logstash를 통해 필터링 되어 지리데이터를 포함하게 되고,   데이터 포맷이 Json형식으로 바뀌어 Elasticsearch에 색인됩니다.   색인된 데이터를 통해 데이터 분석을 시작하며, Apache Hadoop와 Elasticsearch의 연동 인터페이스 ES-HADOOP을 사용하여 Elasticsearch와 Hadoop 간에 데이터를 더욱 쉽게 이동할 수 있게 할 수 있습니다.. Apache Spark 분석 엔진을 통해 로그 데이터를 분석하여 분석된 데이터를 시각화 웹 서버로 전송한 뒤 마이크로 웹 프레임워크 Flask와 Apache HTTP Server를 통해 분석된 데이터를 차트로 시각해줍니다. Kibana를 통해 시각화하는 방법도 있습니다.
 
 
 # Raw Apache Web Access Log 전송
@@ -54,7 +54,7 @@ done
 ssh -p [port] [user]@[ip] 'echo $(date "+%Y-%m-%d") >> [Folderpath]/[txt file name]'
 ```
 
-### 전송받은 데이터 전처리 서버는 Week 폴더안에 분석을 시작할 주의 웹 로그 데이터가 들어있으며, 해당 주의 폴더에 Log 데이터를 백업을합니다.
+### 전송받은 데이터 전처리 서버는 Week 폴더안에 분석을 시작할 주의 웹 로그 데이터가 들어있으며,   해당 주의 폴더에 Log 데이터를 백업을합니다.
 ### 해당 스크릅트는 일주일 단위로 자동으로 전송해야하므로 crontab 스케쥴링에 포함시켜줍니다.
 ```sh
 export VISUAL=vim; crontab -e
@@ -68,7 +68,7 @@ export VISUAL=vim; crontab -e
 ### 전처리 서버의 시스템 구성
 ![noname01](https://user-images.githubusercontent.com/44472886/103401573-bccd2e00-4b8c-11eb-826c-0ec5ddbb5fbd.png)
 
-### 전처리 서버의 핵심은 원시 로그 데이터에 들어있는 필드값을 grok 필터를 통해 필트값을 가져오고, geoip 를 통해서 지리 데이터를 추가하는것입니다.
+### 전처리 서버의 핵심은 원시 로그 데이터에 들어있는 필드값을 grok 필터를 통해 필트값을 가져오고,   geoip 를 통해서 지리 데이터를 추가하는것입니다.
 ![dddd](https://user-images.githubusercontent.com/44472886/103401675-23eae280-4b8d-11eb-8c7a-a1c1ea0fbdf4.JPG)
 ### 위 그림과 같이 지리 정보 데이터가 추가하여 더욱 효과적으로 지도를 통해 유용한 정보를 보여줄 수 있습니다.
 
@@ -84,10 +84,10 @@ export VISUAL=vim; crontab -e
 
 ### sbt 프로젝트 구조
 * sbt-project-folder
- * src
-  * main
-   * scala
-    * scala-source
+  * src
+   * main
+     * scala
+       * scala-source
         
 
 ```sh

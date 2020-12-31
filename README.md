@@ -1,5 +1,8 @@
 # Web-Log-Mining
 
+### Spark 2.3.3 -> Spark 3.0.1 버전 교체가 이루어졌습니다.
+### scala version 2.11 -> 2.12
+
 ### 웹 로그 마이닝을 통해 웹 로그 데이터에서 관심 있는 사용자들의 유용한 행동 패턴을 추출하고 해킹당한 서버를 위해 사용자들의 사용패턴을 통해 유해 봇들을 차단하고 싶어서 시작한 프로젝트입니다.
 
 ### 사용된 데이터는 2019년 1월 해킹을 당했던 웹 서버의 로그기록을 통해 게시판 형태의 웹 서비스를 타깃으로 하여 교회 사용자를 Hack, Search 에이전트로 분류하고, 컨텐츠 사용자들의 컨텐츠 사용 패턴을 추출합니다.
@@ -161,4 +164,37 @@ echo '[sudo pwd]' | sudo -S mv $HOME/Data/* /var/www/html/FLASKAPPS/Data/$P/
 ### 해당 데이터를 FLASK에서 사용하여 html파일을 렌더링시키면서, html에 데이터를 전송합니다.
 
 ### 웹을 통해 데이터를 차트로 시각화합니다.
+
+# 데이터 분석
+
+### 분석하고자 하는 웹 접속 로그의 형식은 그림과같습니다.
+### Combined 접속 로그와 Common 접속 로그 형식 2가지 중 Combined형식을 사용합니다.
+### Combined 접속 로그 예시
+![log](https://user-images.githubusercontent.com/44472886/103403409-51d32580-4b93-11eb-893e-9f8a05f98a8f.png)
+### Combined 접속 로그 필드
+![dfsdfasdf](https://user-images.githubusercontent.com/44472886/103403416-57c90680-4b93-11eb-87f0-dd6b5287da64.JPG)
+
+### 이 데이터들은 전처리를 거쳐 지리정보를 포함하므로 분석시에 지리정보를 이용합니다.
+### 분석의 순서는 다음 그림과같습니다.
+![분류플로우](https://user-images.githubusercontent.com/44472886/103403489-9eb6fc00-4b93-11eb-8c19-966d7b18b2a9.png)
+
+### 먼저 Hack 봇, search 봇을 분류해야합니다.
+### 해당 링크의 작성자분의 도움도 받으면서 서버 로그 중 정규식 매칭이 안되는 Agent 및 request를 가진 사용자를 Hack으로 분류하였습니다.
+### https://xetown.com/tips/1130812
+
+### search 봇은 Google, BingBot, ... 등 유명한 검색 봇을 기준으로 분류하였습니다.
+
+### 사용자와 게시판을 연관시켜서 사용자들에게 인기가 많은 게시판
+### 국가별 게시판 사용률 유해봇이 가장 많이 접속한 게시판 등
+### 웹 서비스 별 다양한 정보를 얻을 수 있습니다.
+
+### 제가 만든 웹 서버는 220.69.209.124:80 가시면 구경하실 수 있습니다.
+![web1](https://user-images.githubusercontent.com/44472886/103403733-85fb1600-4b94-11eb-8d8b-2badbb32fe71.JPG)
+![web2](https://user-images.githubusercontent.com/44472886/103403736-872c4300-4b94-11eb-81c0-5ce5a9cf7efe.JPG)
+![web3](https://user-images.githubusercontent.com/44472886/103403737-872c4300-4b94-11eb-82ec-f1d597429feb.JPG)
+![web4](https://user-images.githubusercontent.com/44472886/103403739-87c4d980-4b94-11eb-81c1-8f13f11b676a.JPG)
+![web5](https://user-images.githubusercontent.com/44472886/103403740-87c4d980-4b94-11eb-9d12-9f4a4c3833d8.JPG)
+
+
+
 

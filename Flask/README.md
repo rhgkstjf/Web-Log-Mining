@@ -12,7 +12,7 @@
 #밑에 명령어에서 검색되는 python 
 ls /usr/bin/ | grep python
 ```
-![캡처](https://user-images.githubusercontent.com/44472886/103400617-1895b800-4b89-11eb-9c62-abef96d73c4f.JPG)
+![Inked캡처_LI](https://user-images.githubusercontent.com/44472886/103400745-9d80d180-4b89-11eb-8e50-8e69f7ff427d.jpg)
 
 ```sh
 # 밑에 명령어가 error : no alternatives for python 뜰 경우 아무것도 등록되어있지않음

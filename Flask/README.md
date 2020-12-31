@@ -51,4 +51,13 @@ sudo apt-get install python3-pip
 sudo pip3 install flask
 ```
 
+### Apache2 Flask 연동
+```sh
+#python version 3
+sudo apt-get install libapache2-mod-wsgi-py3 python3-dev
+#python version 2
+sudo apt-get install libapache2-mod-wsgi python-dev
+```
+
+
 

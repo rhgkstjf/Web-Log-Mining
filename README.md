@@ -17,3 +17,5 @@
   * Filebeat
 * Apache HTTP Server Install
 * Flask Install
+
+https://github.com/rhgkstjf/Web-Log-Mining/issues/1#issue-776850156

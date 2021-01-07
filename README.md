@@ -58,7 +58,7 @@ ssh -p [port] [user]@[ip] 'echo $(date "+%Y-%m-%d") >> [Folderpath]/[txt file na
 ```
 
 ### 전송받은 데이터 전처리 서버는 Week 폴더안에 분석을 시작할 주의 웹 로그 데이터가 들어있으며,   해당 주의 폴더에 Log 데이터를 백업을합니다.
-### 해당 스크릅트는 일주일 단위로 자동으로 전송해야하므로 crontab 스케쥴링에 포함시켜줍니다.
+### 해당 스크립트는 일주일 단위로 자동으로 전송해야하므로 crontab 스케쥴링에 포함시켜줍니다.
 ```sh
 export VISUAL=vim; crontab -e
 ```

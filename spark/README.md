@@ -1,4 +1,4 @@
-#  Spark Install
+1. Spark Install
 
     ### Spark 환경변수 추가
     ```sh

@@ -192,10 +192,8 @@ echo '[sudo pwd]' | sudo -S mv $HOME/Data/* /var/www/html/FLASKAPPS/Data/$P/
 ### search 봇은 Google, BingBot, ... 등 유명한 검색 봇을 기준으로 분류하였습니다.
 
 ### 사용자와 게시판을 연관시켜서 사용자들에게 인기가 많은 게시판
-### 국가별 게시판 사용률 유해봇이 가장 많이 접속한 게시판 등
-### 웹 서비스 별 다양한 정보를 얻을 수 있습니다.
+### 국가별 게시판 사용률 유해봇이 가장 많이 접속한 게시판 등의 정보를 얻을 수 있습니다.
 
-### 제가 만든 웹 서버는 220.69.209.124:80 가시면 구경하실 수 있습니다.
 ![web1](https://user-images.githubusercontent.com/44472886/103403733-85fb1600-4b94-11eb-8d8b-2badbb32fe71.JPG)
 ![web2](https://user-images.githubusercontent.com/44472886/103403736-872c4300-4b94-11eb-81c0-5ce5a9cf7efe.JPG)
 ![web3](https://user-images.githubusercontent.com/44472886/103403737-872c4300-4b94-11eb-82ec-f1d597429feb.JPG)

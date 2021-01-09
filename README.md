@@ -186,10 +186,10 @@ echo '[sudo pwd]' | sudo -S mv $HOME/Data/* /var/www/html/FLASKAPPS/Data/$P/
 ![분류플로우](https://user-images.githubusercontent.com/44472886/103403489-9eb6fc00-4b93-11eb-8c19-966d7b18b2a9.png)
 
 ### 먼저 Hack 봇, search 봇을 분류해야합니다.
-### 해당 링크의 작성자분의 도움도 받으면서 서버 로그 중 정규식 매칭이 안되는 Agent 및 request를 가진 사용자를 Hack으로 분류하였습니다.
+### 해당 링크의 작성자분의 Hack List를 참고하여 특정 Agent와 쿼리문 , admin 접근 등의 Request를 통해 사용자를 Hack으로 분류하였습니다.
 ### https://xetown.com/tips/1130812
 
-### search 봇은 Google, BingBot, ... 등 유명한 검색 봇을 기준으로 분류하였습니다.
+### search 봇은 Google, BingBot, ... 등 유명한 검색 봇을 구글에 검색한 기준으로 분류하였습니다.
 
 ### 사용자와 게시판을 연관시켜서 사용자들에게 인기가 많은 게시판
 ### 국가별 게시판 사용률 유해봇이 가장 많이 접속한 게시판 등의 정보를 얻을 수 있습니다.

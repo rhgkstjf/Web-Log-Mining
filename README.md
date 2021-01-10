@@ -12,10 +12,15 @@
 ### 분석을 자동화하기위해 로그 데이터를 사용자 배치크기만큼 전송받아 자동으로 분석한 후 분석된 데이터를 시각화합니다.
 
 ### 프레임워크
-### Hadoop Spark ELK Stack
+### * Hadoop 
+### * Spark 
+### * ELK Stack
 
 ### 개발 언어
-### Scala,Python,Shell Script,Javascript
+### *Scala
+### *Python
+### *Shell Script
+### *Javascript
 
 
 https://github.com/rhgkstjf/Web-Log-Mining/tree/main/Hadoop

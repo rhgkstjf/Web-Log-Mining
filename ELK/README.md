@@ -1,15 +1,15 @@
 # Filebeat
-### Filebeat는 경량 로그 수집기로 로그와 파일을 경량화된 방식으로 전달하고
-### 중앙 집중화하여 작업을 보다 간편하게 만들어준다.
+Filebeat는 경량 로그 수집기로 로그와 파일을 경량화된 방식으로 전달하고
+중앙 집중화하여 작업을 보다 간편하게 만들어줍니다.
 
 ### Filebeat Download
 ### Elastic 공식 홈페이지
 ### https://www.elastic.co/kr/downloads/beats/filebeat
 
-### Filebeat는 Deb 파일, tar.gz 파일 설치방식이 2가지가 존재
-### 필자는 tar.gz 파일을통해 압축을 풀어서 사용
-### Filebeat 압축 풀기 
-### 마지막 줄은 폴더이름을 filebeat로 간략화
+Filebeat는 Deb 파일, tar.gz 파일 설치방식이 2가지가 존재합니다
+필자는 tar.gz 파일을통해 압축을 풀어서 사용합니다
+Filebeat 압축 풀기 
+마지막 줄은 폴더이름을 filebeat로 간략화
 ```sh
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.10.1-linux-x86_64.tar.gz
 tar -xzvf filebeat-7.10.1-linux-x86_64.tar.gz
@@ -17,7 +17,8 @@ mv filebeat-7.10.1-linux-x86_64 filebeat
 ```
 
 ### Filebeat 환경 변수 추가
-### 파일 경로 : /home/data/.bashrc
+파일 경로 : /home/data/.bashrc
+
 ```sh
 export FileBeat=$HOME/filebeat
 ```
@@ -45,16 +46,16 @@ output.logstash:
   hosts: ["localhost:5044"]
 
 ```
-### Filebeat는 한번 보냈던 파일 이름을 기억해두고
-### 다시 실행시 그 파일은 전송시키지않음
-### $FileBeat/data/registry/filebeat/log.json 데이터를 초기화해줘야함
+### Filebeat는 한번 보냈던 파일 이름을 기억해두고 다시 실행시 그 파일은 전송시키지않습니다.
+### $FileBeat/data/registry/filebeat/log.json 데이터를 초기화해줘야합니다.
+
 ```sh
 echo "[]" > $FileBeat/data/registry/filebeat/log.json
 ```
 
 
 # Logstash
-### Logstash는 실시간 파이프라인 기능을 가진 데이터 수집 오픈소스 엔진이며, 서로 다른 소스의 데이터를 동적으로 통합하고 원하는 대상으로 데이터 정규화를 위한 필터의 종류가 많다. Logstash는 다른 서버 및 데이터 소스의 로그를 처리하며 출력은 Elasticsearch와 같은 출력 대상에 저장된다.
+Logstash는 실시간 파이프라인 기능을 가진 데이터 수집 오픈소스 엔진이며, 서로 다른 소스의 데이터를 동적으로 통합하고 원하는 대상으로 데이터 정규화를 위한 필터의 종류가 많다. Logstash는 다른 서버 및 데이터 소스의 로그를 처리하며 출력은 Elasticsearch와 같은 출력 대상에 저장된다.
 
 ### Logstash Download
 ### Elastic 공식 홈페이지
@@ -69,21 +70,24 @@ mv logstash-7.10.1-linux-x86_64 logstash
 ```
 
 ### Logstash 환경변수 추가
-### 파일 경로 : /home/data/.bashrc
+파일 경로 : /home/data/.bashrc
+
 ```sh
 export LogStash=$HOME/logstash
 ```
 
 ### Logstash 환경설정 파일 복사 및 수정
-### 파일 경로 : $LogStash/config/logstash-sample.conf
+파일 경로 : $LogStash/config/logstash-sample.conf
+
 ```sh
 cp access-apache.conf logstash-sample.conf
 ```
 
 ### 환경설정 수정
-### grok 필터에서 QS:user-agent는 Filebeat의 agent와 겹침
-### user_agent로 할 시 겹치지않고 해당 필드값 제대로 가져와짐
-### Elasticsearch에 인덱싱할 시 index 이름에 logstash가 들어가야 geoip의 위도 경도값 인식
+grok 필터에서 QS:user-agent는 Filebeat의 agent와 겹침
+user_agent로 할 시 겹치지않고 해당 필드값 제대로 가져와짐
+Elasticsearch에 인덱싱할 시 index 이름에 logstash가 들어가야 geoip의 위도 경도값 인식
+
 ```sh
 # Sample Logstash configuration for creating a simple
 # Beats -> Logstash -> Elasticsearch pipeline.
@@ -144,7 +148,7 @@ output {
 ```
 
 # Elasticsearch
-### Elasitcsearch는 오픈소스 검색 라이브러리인 아파치 루씬(Apache Lucene)을 기반으로 구축된 Java 오픈소스 분산 검색엔진으로 텍스트, 숫자, 위치 기반 정보, 정형 및 비정형 데이터 등 모든 유형의 데이터를 위한 분산형 오픈 소스 검색 및 분석 엔진이다. 간단한 REST API, 분산형 특징, 속도, 확장성을 제공하며 데이터 수집, 보강, 저장, 분석, 시각화를 위한 오픈 소스 도구 모음인 Elastic Stack의 중심 구성 요소로 사용된다. ELK Stack은 Elasticssearch, Logstash, Kibana, 이 오픈 소스 프로젝트 세 개의 머리글자이며, Logstash는 여러 소스에서 동시에 데이터를 수집하여 변환한 후 Elasticsearch 같은 “stash"로 전송하는 서버 사이드 데이터 처리 파이프라인이다. Kibana는 사용자가 Elasticsearch에서 차트와 그래프를 이용해 데이터를 시각화할 수 있게 해준다.
+Elasitcsearch는 오픈소스 검색 라이브러리인 아파치 루씬(Apache Lucene)을 기반으로 구축된 Java 오픈소스 분산 검색엔진으로 텍스트, 숫자, 위치 기반 정보, 정형 및 비정형 데이터 등 모든 유형의 데이터를 위한 분산형 오픈 소스 검색 및 분석 엔진이다. 간단한 REST API, 분산형 특징, 속도, 확장성을 제공하며 데이터 수집, 보강, 저장, 분석, 시각화를 위한 오픈 소스 도구 모음인 Elastic Stack의 중심 구성 요소로 사용된다. ELK Stack은 Elasticssearch, Logstash, Kibana, 이 오픈 소스 프로젝트 세 개의 머리글자이며, Logstash는 여러 소스에서 동시에 데이터를 수집하여 변환한 후 Elasticsearch 같은 “stash"로 전송하는 서버 사이드 데이터 처리 파이프라인이다. Kibana는 사용자가 Elasticsearch에서 차트와 그래프를 이용해 데이터를 시각화할 수 있게 해준다.
 
 ### Elasticsearch Download
 ### Elastic 공식 홈페이지
@@ -167,20 +171,22 @@ curl -XGET localhost:9200
 ```
 
 ### Elasticsearch 환경설정 수정
-### 수정을 위해 root 권한이 필요
-### 파일 위치 : /etc/elasticsearch/elasticsearch.yml
+수정을 위해 root 권한이 필요
+파일 위치 : /etc/elasticsearch/elasticsearch.yml
+
 ```sh
 su
 cd /etc/elasticsearch
 vim elasticsearch.yml
 ```
 
-### yml 파일에 아래처럼 추가
-### Elasticsearch 해킹을 당할수 있으므로, 방화벽을 꼭 쳐두시고
-### port 를 9200 말고 다른걸로 사용하시는걸 권장합니다.
-### Night Lion Security라는 인덱스가 생성되면서 모든 인덱스가 날라간 경험이있으므로
-### 꼭 X-Pack 을 사용하여 Elasticsearch 보안에 신경써주세요 
-### X-Pack Install은 Kibana Install 후 나옵니다.
+yml 파일에 아래처럼 추가
+Elasticsearch 해킹을 당할수 있으므로, 방화벽을 꼭 쳐두시고
+port 를 9200 말고 다른걸로 사용하시는걸 권장합니다.
+Night Lion Security라는 인덱스가 생성되면서 모든 인덱스가 날라간 경험이있으므로
+X-Pack 을 사용하여 Elasticsearch 보안에 신경써주시면 좋습니다.
+X-Pack Install은 Kibana Install 후 나옵니다.
+
 ```sh
 cluster.name: cluster-name
 node.name: node-01
@@ -196,7 +202,8 @@ path.repo: ["/home/data/elastic_snapshot"]
 ```
 
 # Kibana
-### Kibana는 Elasticsearch 데이터를 시각화하고 Elastic Stack을 탐색하게 해주는 무료 오픈 소스 인터페이스
+Kibana는 Elasticsearch 데이터를 시각화하고 Elastic Stack을 탐색하게 해주는 무료 오픈 소스 인터페이스
+
 ### Elastic 공식 홈페이지
 ### https://www.elastic.co/kr/downloads/kibana
 
@@ -214,8 +221,8 @@ sudo service kibana stop
 ```
 
 ### Kibana 환경설정 수정
-### 수정을 위해 root 권한 필요
-### 파일 경로 : /etc/kibana/kibana.yml
+수정을 위해 root 권한 필요
+파일 경로 : /etc/kibana/kibana.yml
 ```sh
 server.port: kibana_port
 server.host: "kibana_ip"
@@ -226,17 +233,18 @@ elasticsearch.hosts: ["http://elasticsearch_ip:port"]
 ### Elasticsearch X-Pack Install
 ### Elastic 공식 홈페이지 <X-Pack 가이드>
 ### https://www.elastic.co/guide/kr/x-pack/current/installing-xpack.html
-### 기본적으로 X-Pack 이 활성화되어있습니다.
-### 설치가 안되어있을 시
-### Elasticsearch, Kibana bin 폴더 경로 <Deb 설치시> : /usr/share/
+기본적으로 X-Pack 이 활성화되어있습니다.
+설치가 안되어있을 시
+Elasticsearch, Kibana bin 폴더 경로 <Deb 설치시> : /usr/share/
+
 ```sh
 elasticsearch/bin/elasticsearch
 elasticsearch/bin/elasticsearch-plugin install x-pack
 kibana/bin/kibana-plugin install x-pack
 ```
 ### x-pack 활성화 yml 파일 수정
-### 파일 경로 /etc/elasticsearch/elasticsearch.yml , /etc/kibana/kibana.yml
-### Elasticsearch.yml 과 kibana.yml 둘다 추가
+파일 경로 /etc/elasticsearch/elasticsearch.yml , /etc/kibana/kibana.yml
+Elasticsearch.yml 과 kibana.yml 둘다 추가
 ```sh
 xpack.security.enabled true
 ```

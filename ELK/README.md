@@ -8,8 +8,6 @@ https://www.elastic.co/kr/downloads/beats/filebeat
 
 Filebeat는 Deb 파일, tar.gz 파일 설치방식이 2가지가 존재합니다
 필자는 tar.gz 파일을통해 압축을 풀어서 사용합니다
-Filebeat 압축 풀기 
-마지막 줄은 폴더이름을 filebeat로 간략화
 
 ```sh
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.10.1-linux-x86_64.tar.gz

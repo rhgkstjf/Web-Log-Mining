@@ -1,13 +1,13 @@
 # Flask Install
 
-### python version 변경
-### 도움받은 링크
-### https://codechacha.com/ko/change-python-version/
-### Ubuntu 16.04 LTS 에서 python version 을출력하면 python2 version입니다.
-### 기존의 있던 python 3.5 버전 또는 2.7 버전을 쓰셔도됩니다.
-### python 3 version 을 default 로 설정합니다.
-### update-alternatives --config python 옵션을 통해 default python version을 바꿉니다.
-### 초기에 설정을 하지않았다면 아무것도 등록되어있지 않습니다.
+### python version 수정
+도움받은 링크
+https://codechacha.com/ko/change-python-version/
+Ubuntu 16.04 LTS 에서 python version 을출력하면 python2 version입니다.
+기존의 있던 python 3.5 버전 또는 2.7 버전을 쓰셔도됩니다.
+python 3 version 을 default 로 설정합니다.
+update-alternatives --config python 옵션을 통해 default python version을 바꿉니다.
+초기에 설정을 하지않았다면 아무것도 등록되어있지 않습니다.
 ```sh
 #밑에 명령어에서 검색되는 python 
 ls /usr/bin/ | grep python
@@ -25,8 +25,8 @@ sudo update-alternatives --config python
 ```
 
 ### python 3.7 Install
-### 도움 링크
-### https://linuxize.com/post/how-to-install-python-3-7-on-ubuntu-18-04/
+도움받은 링크
+https://linuxize.com/post/how-to-install-python-3-7-on-ubuntu-18-04/
 
 ```sh
 sudo apt update
@@ -58,9 +58,9 @@ sudo apt-get install libapache2-mod-wsgi-py3 python3-dev
 #python version 2
 sudo apt-get install libapache2-mod-wsgi python-dev
 ```
-### Apache Web서버의 환경설정 파일에 아래 내용을 추가합니다.
-### WSGIScriptAlias의 두번째 매개변수에 wsgi파일의 경로를 작성해주시면됩니다.
-### 경로 : /etc/apache2/sites-available
+Apache Web서버의 환경설정 파일에 아래 내용을 추가합니다.
+WSGIScriptAlias의 두번째 매개변수에 wsgi파일의 경로를 작성해주시면됩니다.
+경로 : /etc/apache2/sites-available
 ```sh
 WSGIScriptAlias / /var/www/FLASKAPPS/run.wsgi
         <Directory /var/www/FLASKAPPS>

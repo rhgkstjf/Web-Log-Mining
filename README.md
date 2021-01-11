@@ -31,6 +31,7 @@
 ### 언어
 * Scala
 
+### 설치 및 환경설정 
 * [Hadoop Install](https://github.com/rhgkstjf/Web-Log-Mining/tree/main/Hadoop)
   * Java Install
   * ssh Setting

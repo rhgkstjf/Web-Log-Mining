@@ -1,5 +1,5 @@
 # 1. Oracle Java 8 Install
-   ## 구글 - Oracle Java 8 검색 후 Oracle 홈페이지에서 운영체제 linux-x64, 파일형식 tar.gz 다운 필자는 JDK 1.8.0_201 버전 사용
+   ### 구글 - Oracle Java 8 검색 후 Oracle 홈페이지에서 운영체제 linux-x64, 파일형식 tar.gz 다운 필자는 JDK 1.8.0_201 버전 사용
    
    ### JDK tar.gz 압축 풀기
    ```sh
@@ -29,8 +29,9 @@
    java -version
    ```
    ### 정상 설치시 java version 출력
+   
 # 2. ssh 세팅
-   ## 호스트 파일 설정
+   ### 호스트 파일 설정
    ### 파일 경로 : /etc/hosts에 아래와 같이 자신의 컴퓨터 노드 추가
    ### 예시
    ```sh
@@ -41,10 +42,10 @@
    ```
    
    ### Hadoop 사용시, 노드간 자동으로 ssh 통신을 하기 위한 작업
-   ### ssh key 생성
-   ### * 실행 호스트 : Master
-   ### * 모든 서버에서 ssh-keygen 명령어를 사용하여 공개키 발급
-   ### * /home/hadoop/.sshj 디렉토리 생성 및 생성 파일 확인
+   ssh key 생성
+   * 실행 호스트 : Master
+   * 모든 서버에서 ssh-keygen 명령어를 사용하여 공개키 발급
+   * /home/hadoop/.sshj 디렉토리 생성 및 생성 파일 확인
    ```sh
    ssh-keygen -t rsa
    ssh second 'ssh-keygen -t rsa'

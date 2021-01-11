@@ -25,7 +25,9 @@
 ## 개발 환경 및 기술정보
 
 ### 개발 운영체제
-  - windows 10
+  - Windows 10
+  - Ubuntu 16.04 LTS
+  - Ubuntu 18.04 LTS
 
 
 ### 언어

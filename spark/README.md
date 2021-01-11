@@ -1,17 +1,19 @@
 # Spark Install
 
 Spark 환경변수 추가
-    
- ```sh
- vim .bashrc
-    
- <아래 내용 파일에 입력>
+
+맨 밑 2줄은 Pyspark 사용을 위한 python3 버전 설정
+```sh
+vim .bashrc
+```
+ 
+아래 내용 파일에 입력
+```sh
 export SPARK_HOME=$HOME/spark-2.3.3-bin-hadoop2.7
 export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native
     
 export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:$PYTHONPATH
 export PYSPARK_PYTHON=python3
-아래 2줄은 Pyspark 사용을 위한 python3 버전 설정
 ```
     
     

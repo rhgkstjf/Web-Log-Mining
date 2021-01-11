@@ -58,6 +58,15 @@ sudo apt-get install libapache2-mod-wsgi-py3 python3-dev
 #python version 2
 sudo apt-get install libapache2-mod-wsgi python-dev
 ```
-
+### Apache Web서버의 환경설정 파일에 아래 내용을 추가합니다.
+### WSGIScriptAlias의 두번째 매개변수에 wsgi파일의 경로를 작성해주시면됩니다.
+### 경로 : /etc/apache2/sites-available
+```sh
+WSGIScriptAlias / /var/www/FLASKAPPS/run.wsgi
+        <Directory /var/www/FLASKAPPS>
+         Order allow,deny
+         Allow from all
+        </Directory>
+```
 
 

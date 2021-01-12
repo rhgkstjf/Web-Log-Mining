@@ -175,7 +175,16 @@ sbt-project-folder/
            └─ scala-source
 ~~~
 
-### Scala Source는 해당 프로젝트 폴더에 있습니다.
+### 프로젝트 폴더에 .sbt 파일을 만들어 패키징 할 때 사용할 scala 버젼과 spark core, sql을 추가합니다.
+
+```sh
+name := "AutoLog Project"
+version := "1.3"
+scalaVersion := "2.11.8"
+libraryDependencies += "org.apache.spark" %% "spark-core" % "2.3.3"
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.3"
+```
+
 ```sh
 sbt package
 ```

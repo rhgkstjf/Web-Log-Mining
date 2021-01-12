@@ -170,9 +170,9 @@ hadoop fs -put urldata.json /urldata/urldata.json
 ~~~
 sbt-project-folder/
   └─ src
-     ├─ main
-     └─ scala
-        └─ scala-source
+     └─ main
+        └─ scala
+           └─ scala-source
 ~~~
 
 ### Scala Source는 해당 프로젝트 폴더에 있습니다.
